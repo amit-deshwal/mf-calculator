@@ -1,91 +1,71 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
-
-const inter = Inter({ subsets: ['latin'] })
+"use client";
+import CalculatorSection from "@/components/calculator";
+import Stats from "@/components/stats";
+import Chart from "@/components/chart";
+import { ChakraProvider } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/700.css";
+import Image from "next/image";
+import { useState } from "react";
+const theme = extendTheme({
+  fonts: {
+    heading: `'Poppins' sans-serif`,
+    subHeading: `'Poppins' sans-serif`,
+    body: `'Poppins' sans-serif`,
+  },
+});
 
 export default function Home() {
+  const [maturityAmount, setMaturityAmount] = useState(0);
+  const [investedAmount, setInvestedAmount] = useState(0);
+  const [interestEarnedAmount, setInterestEarnedAmount] = useState(0);
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.jsx</code>
+    <main className="min-h-screen px-7 pt-16 xl:px-32 xl:pt-16">
+      <div className="md:ml-4">
+        <h1 className="text-2xl md:text-4xl font-bold">
+          Mutual Fund Returns Calculator
+          <Image
+            src="/favicon.svg"
+            alt="logo"
+            width={30}
+            height={30}
+            className="ml-2 inline-block"
+          />
+        </h1>
+        <p className="mt-2 text-sm md:text-base text-gray-400">
+          Calculate mutual fund returns with expense ratio
         </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+      </div>
+      <section className="flex flex-col mt-6 items-center xl:items-start xl:justify-around xl:flex-row xl:mt-16">
+        <ChakraProvider theme={theme}>
+          <div className="flex justify-center flex-col border w-full rounded-xl py-4 px-6 md:flex-row  xl:w-8/12 xl:mr-8 xl:py-10 bg-slate-50">
+            <div className="w-full text-sm md:w-3/5 xl:w-8/12 md:text-base">
+              <CalculatorSection
+                maturityAmount={maturityAmount}
+                setMaturityAmount={setMaturityAmount}
+                investedAmount={investedAmount}
+                setInvestedAmount={setInvestedAmount}
+                interestEarnedAmount={interestEarnedAmount}
+                setInterestEarnedAmount={setInterestEarnedAmount}
+              />
+            </div>
+            <div className="md:mt-10 md:ml-14 xl:ml-12 xl:mt-10">
+              <Chart
+                investedAmount={investedAmount}
+                interestEarnedAmount={interestEarnedAmount}
+              />
+            </div>
+          </div>
+          <div className="w-full md:w-2/4 mt-6 mb-6 py-4 px-4 xl:mt-0 text-sm border rounded-xl xl:w-2/6 xl:mr-8 xl:py-6 h-max bg-slate-50">
+            <Stats
+              maturityAmount={maturityAmount}
+              investedAmount={investedAmount}
+              interestEarnedAmount={interestEarnedAmount}
             />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+          </div>
+        </ChakraProvider>
+      </section>
     </main>
-  )
+  );
 }
