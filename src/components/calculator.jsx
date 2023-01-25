@@ -50,7 +50,7 @@ function CalculatorSection({
 
   return (
     <>
-      <h2 className="md:ml-2 bg-emerald-500 text-white font-semibold inline-block rounded-md px-4 py-2">
+      <h2 className="ml-2 md:ml-2 bg-emerald-500 text-white font-semibold inline-block rounded-md px-4 py-2">
         Systematic Investment Plannning (SIP)
       </h2>
       <div className="flex flex-col mt-8 px-2">

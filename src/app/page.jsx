@@ -39,7 +39,7 @@ export default function Home() {
       </div>
       <section className="flex flex-col mt-6 items-center xl:items-start xl:justify-around xl:flex-row xl:mt-16">
         <ChakraProvider theme={theme}>
-          <div className="flex justify-center flex-col border w-full rounded-xl py-4 px-6 md:flex-row  xl:w-8/12 xl:mr-8 xl:py-10 bg-slate-50">
+          <div className="flex justify-center flex-col border w-full rounded-xl py-4 px-2 md:flex-row  xl:w-8/12 xl:mr-8 xl:py-10 bg-slate-50">
             <div className="w-full text-sm md:w-3/5 xl:w-8/12 md:text-base">
               <CalculatorSection
                 maturityAmount={maturityAmount}

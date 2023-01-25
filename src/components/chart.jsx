@@ -5,7 +5,6 @@ function Chart({ interestEarnedAmount, investedAmount }) {
   const [dataMock, setDataMock] = useState();
 
   useEffect(() => {
-    console.log(interestEarnedAmount);
     const dataForInvestedAmount = {
       title: "Invested Amt.",
       value: investedAmount,
