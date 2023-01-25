@@ -21,7 +21,7 @@ export default function Home() {
   const [investedAmount, setInvestedAmount] = useState(0);
   const [interestEarnedAmount, setInterestEarnedAmount] = useState(0);
   return (
-    <main className="min-h-screen px-7 pt-16 xl:px-32 xl:pt-16">
+    <main className="min-h-screen px-4 mt-8 xl:px-32 xl:pt-16">
       <div className="md:ml-4">
         <h1 className="text-2xl md:text-4xl font-bold">
           Mutual Fund Returns Calculator
